@@ -1,22 +1,14 @@
-import mainpic from "../assets/restauranfood.jpg"
+
+import {Routes, Route} from 'react-router-dom'
+
+import Hero from './Hero'
 
 const Main =() => {
 
     return (
-        <div className="hero">
-            <div className="container">
-            <section className="list-class">
-                <article>
-                    <p className="header-text">Little Lemon</p>
-                    <p className="subheader">Chicago</p>
-                    <p className="subtext">We are a family owned Mediterranean restaurant focused on traditional recipes served with a modern twist</p>
-                </article>
-                <article>
-                    <img src={mainpic} alt="" id="main-pic"/>
-                </article>
-            </section>
-            </div>
-        </div>
+        <Routes>
+          <Route path='/' element={ <Hero />}></Route>
+        </Routes>
     )
 }
 

@@ -1,21 +1,27 @@
-header img{
+@import url('https://fonts.googleapis.com/css?family=Markazi+Text');
+@import url('https://fonts.googleapis.com/css?family=Karla-Medium');
+@import url('https://fonts.googleapis.com/css?family=Karla');
+@import url('https://fonts.googleapis.com/css?family=Helvetica');
+
+header img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
 
-.container{
-  width:80%;
+.container {
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
-  margin-top:10px;
+  margin-top: 10px;
+  padding: bottom 10px;
 }
 
 
 /* Fonts and text styling*/
-.header-text{
-  display:inline;
+.header-text {
+  display: inline;
   color: var(--secondary, #F4CE14);
   /* H1 */
   font-family: Markazi Text;
@@ -23,9 +29,10 @@ header img{
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top:20px;
+  margin-top: 20px;
 }
-.subheader{
+
+.subheader {
   color: #FFF;
 
   /* h2 */
@@ -34,8 +41,9 @@ header img{
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top:20px;
+  margin-top: 20px;
 }
+
 .subtext {
   color: #FFF;
 
@@ -46,33 +54,33 @@ header img{
   font-weight: 500;
   line-height: normal;
   word-wrap: normal;
-  width:300px;
-  margin-top:20px;
+  width: 300px;
+  margin-top: 20px;
 }
 
 
-
-ul{
+ul {
   list-style: none;
   list-style-type: none;
 }
 
-.list-class{
+.list-class {
   align-items: flex-start;
   display: flex;
   gap: 30px;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .hero {
   background-color: #495E57;
-  height:400px;
+  height: 400px;
 }
 
-nav ul li{
+nav ul li {
   color: black;
   font-family: "Karla-Medium", Helvetica;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 0;
   line-height: 40px;
@@ -84,53 +92,96 @@ nav li a {
 }
 
 @media all and (max-width: 600px) {
-  nav ul, .list-class {
+
+  nav ul,
+  .list-class {
     flex-wrap: wrap;
   }
-  nav ul li, .list-class article{
+
+  nav ul li,
+  .list-class article {
     flex-basis: 50%;
   }
 
 }
 
 @media all and (max-width: 400px) {
-  nav ul li, .list-class article {
+  .hero {
+    height: auto;
+  }
+
+  nav ul li,
+  .list-class article {
     flex-basis: 100%;
   }
 }
 
 
-#footer-image{
-  display: block;
-  justify-content:  center;
-  padding-top: 40px;
-  min-width:100px;
-  max-height: 200px;
-  width:auto;
-  height:auto;
+#main-pic {
+  flex: 1;
+  justify-content: right;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  min-width: 100px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  border-radius: 5%;
 }
 
-#main-pic{
-  flex:1;
-  justify-content:  right;
-  margin-top:40px;
-  min-width:100px;
-  max-height: 400px;
-  width:auto;
-  height:auto;
-  border-radius: 10%;
+#footer-image {
+  display: block;
+  justify-content: center;
+  padding-top: 40px;
+  min-width: 100px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
 }
-.list-class article ul{
+
+footer {
+  padding-top: 40px;
+  ;
+}
+
+.list-class article ul {
   text-align: left;
   margin: 10px;
   padding: 0;
 }
-.list-class article ul li{
+
+.list-class article ul li {
   font-size: 1em;
-  font-weight:500;
+  font-weight: 500;
   padding: 5px;
 }
-.list-class article ul li a{
+
+.list-class article ul li a {
   color: black;
   text-decoration: none;
+}
+
+
+.primary-button {
+  color: #000;
+  text-align: center;
+
+  /* h3 */
+  font-family: Karla;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 200px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  transition-duration: 0.3s;
+  background: var(--secondary, #F4CE14);
+}
+
+.primary-button:hover {
+
+  cursor: pointer;
+  background-color: #EE9972;
 }

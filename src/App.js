@@ -4,13 +4,13 @@ import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import Main from "./components/Main"
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Nav />
-      <Main />
-      <Footer />
-    </>
+    <div className="wrapper">
+        <Nav />
+        <Main />
+        <Footer />
+    </div>
   );
 }
 
