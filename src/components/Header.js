@@ -1,10 +1,10 @@
 import logo from "../assets/little-lemon-large.png"
 
-const Header = (
-    <header>
-        <img src={logo}></img>
-    </header>
-)
-
-
+function Header() {
+   return (
+        <header>
+            <img src={logo} alt="" />
+        </header>
+    );
+}
 export default Header

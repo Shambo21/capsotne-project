@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+header img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* Fonts and text styling*/
+.header-text{
+  color: var(--secondary, #F4CE14);
+  /* H1 */
+  font-family: Markazi Text;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top:20px;
+}
+.subheader{
+  color: #FFF;
+
+  /* h2 */
+  font-family: Markazi Text;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top:20px;
+}
+.subtext {
+  color: #FFF;
+
+  /* h3 */
+  font-family: Karla;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  word-wrap: normal;
+  width:300px;
+  margin-top:20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+ul{
+  list-style: none;
+  list-style-type: none;
+}
+
+.list-class{
+  align-items: flex-start;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 30px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.hero {
+  background-color: #495E57;
+  height:400px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav ul li{
+  color: #00000033;
+  font-family: "Karla-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+
+nav li a {
+  color: black;
+  text-decoration: none;
+}
+
+@media all and (max-width: 600px) {
+  nav ul, .list-class {
+    flex-wrap: wrap;
   }
-  to {
-    transform: rotate(360deg);
+  nav ul li, .list-class article{
+    flex-basis: 50%;
   }
+
+}
+
+@media all and (max-width: 400px) {
+  nav ul li, .list-class article {
+    flex-basis: 100%;
+  }
+}
+
+
+#footer-image{
+  display: block;
+  justify-content:  center;
+  padding-top: 40px;
+  min-width:100px;
+  max-height: 200px;
+  width:auto;
+  height:auto;
+}
+
+#main-pic{
+  flex:1;
+  justify-content:  right;
+  margin-top:40px;
+  min-width:100px;
+  max-height: 400px;
+  width:auto;
+  height:auto;
+  border-radius: 10%;
+}
+.list-class article ul{
+  text-align: left;
+  margin: 10px;
+  padding: 0;
+}
+.list-class article ul li{
+  font-size: 1em;
+  font-weight:500;
+  padding: 5px;
+}
+.list-class article ul li a{
+  color: black;
+  text-decoration: none;
 }
