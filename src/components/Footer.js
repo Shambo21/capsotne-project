@@ -1,6 +1,6 @@
 import logo from "../assets/footer-logo.png"
 
-function Footer() {
+const Footer = () => {
    return (
         <footer className="container">
             <section className="list-class">

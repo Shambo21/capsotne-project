@@ -1,6 +1,6 @@
 import mainpic from "../assets/restauranfood.jpg"
 
-function Main() {
+const Main =() => {
 
     return (
         <div className="hero">

@@ -15,6 +15,7 @@ header img{
 
 /* Fonts and text styling*/
 .header-text{
+  display:inline;
   color: var(--secondary, #F4CE14);
   /* H1 */
   font-family: Markazi Text;
@@ -69,12 +70,12 @@ ul{
 }
 
 nav ul li{
-  color: #00000033;
+  color: black;
   font-family: "Karla-Medium", Helvetica;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 30px;
+  line-height: 40px;
 }
 
 nav li a {

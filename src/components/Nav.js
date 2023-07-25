@@ -1,5 +1,5 @@
 import logo from "../assets/Logo.svg"
-function Nav() {
+const Nav = () => {
    return  (
             <nav className="container">
                 <ul className="list-class">
