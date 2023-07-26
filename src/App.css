@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Markazi+Text');
-@import url('https://fonts.googleapis.com/css?family=Karla-Medium');
-@import url('https://fonts.googleapis.com/css?family=Karla');
-@import url('https://fonts.googleapis.com/css?family=Helvetica');
+@import url('https://fonts.googleapis.com/css?family=Markazi+Text|Karla:Medium|Helvetica');
 
 header img {
   display: block;
@@ -41,7 +38,7 @@ header img {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .subtext {
@@ -62,6 +59,11 @@ header img {
 ul {
   list-style: none;
   list-style-type: none;
+
+}
+
+section.list-class {
+  gap: 40px;
 }
 
 .list-class {
@@ -70,6 +72,18 @@ ul {
   gap: 30px;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+.vert-list {
+  align-items: flex-start;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+  flex-flow: row wrap;
+}
+
+.vert-list li {
+  flex-basis: 100%
 }
 
 .hero {
@@ -93,6 +107,9 @@ nav li a {
 
 @media all and (max-width: 600px) {
 
+  .hero {
+    height: auto;
+  }
   nav ul,
   .list-class {
     flex-wrap: wrap;
@@ -106,8 +123,8 @@ nav li a {
 }
 
 @media all and (max-width: 400px) {
-  .hero {
-    height: auto;
+  .container {
+    width: 90%;
   }
 
   nav ul li,
@@ -115,7 +132,6 @@ nav li a {
     flex-basis: 100%;
   }
 }
-
 
 #main-pic {
   flex: 1;
@@ -132,7 +148,7 @@ nav li a {
 #footer-image {
   display: block;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 20px;
   min-width: 100px;
   max-height: 200px;
   width: auto;
@@ -158,7 +174,15 @@ footer {
 
 .list-class article ul li a {
   color: black;
+  font-family: "Karla-Medium", Helvetica;
+  font-size: 18px;
   text-decoration: none;
+}
+
+h3 {
+  font-family: "Karla-Medium", Helvetica;
+  font-weight: bold;
+  color: #495E57;
 }
 
 
@@ -173,15 +197,40 @@ footer {
   font-weight: 500;
   line-height: normal;
   width: 200px;
-  height: 60px;
+  height: 40px;
   flex-shrink: 0;
   border-radius: 16px;
   transition-duration: 0.3s;
   background: var(--secondary, #F4CE14);
 }
 
-.primary-button:hover {
+input,
+select {
+  font-size: 14px;
+  line-height: 10px;
+  padding: 4px 4px;
+  width: 100%;
+  min-height: 20px;
+  border: unset;
+  border-radius: 4px;
+  outline-color: #495E57;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
 
+.primary-button:hover {
   cursor: pointer;
   background-color: #EE9972;
+}
+
+#reservation-form {
+  font-size: 16px;
+  display: flex;
+  margin: 0px auto;
 }
