@@ -234,3 +234,8 @@ select {
   display: flex;
   margin: 0px auto;
 }
+.centered-item{
+  font-size: 16px;
+  display: flex;
+  margin: 0px auto;
+}

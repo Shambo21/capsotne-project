@@ -1,35 +1,39 @@
-import React, { useState, useContext, useEffect} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { MainContext } from './Main';
-import { submitAPI } from './API';
+import { formatDates } from './formatDates';
 
-const BookingForm = () => {
+
+
+const BookingForm = (props) => {
     const now = new Date();
-    const day = ("0" + now.getDate()).slice(-2);
-    const month = ("0" + (now.getMonth() + 1)).slice(-2);
-    const today = now.getFullYear() + "-" + (month) + "-" + (day)
+    const today = formatDates(now)
 
     const [guests, setGuests] = useState(1);
-    const [resTime, setResTime] = useState();
-    const [occasion, setOccasion] = useState();
-    const [date,setDate] = useState();
-    const {state, dispatch} =useContext(MainContext);
+    const [resTime, setResTime] = useState('');
+    const [occasion, setOccasion] = useState('Birthday');
+    const [date, setDate] = useState(today);
+    const { state, dispatch } = useContext(MainContext);
 
-    useEffect(()=>{
+
+    useEffect(() => {
         setDate(state.date)
-    },[state.date])
+    }, [state.date])
 
+    if (!date) setDate(today)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Reservation has been made")
-        const submitVal ={
+        const submitVal = {
             resDate: date,
             resTime: resTime,
             guests: guests,
             occasion: occasion
         }
-        submitAPI(submitVal)
+        const { submitForm } = props;
+        submitForm(submitVal)
     }
+
     return (
         <form id="reservation-form" onSubmit={handleSubmit} className='subtext'>
             <ul className='vert-list'>
@@ -40,13 +44,13 @@ const BookingForm = () => {
                         type="date"
                         id="res-date"
                         defaultValue={date}
-                        onChange={e => dispatch({type:'get-times', date: e.target.value})}
+                        onChange={e => dispatch({ type: 'get-times', date: e.target.value })}
                     />
                 </li>
                 <li>
                     <label htmlFor="res-time">Choose time: </label>
                     <select id="res-time" value={resTime} onChange={e => setResTime(e.target.value)}>
-                        {!state.items ? <option></option> : state.items.map((item)=><option key={item.key} value={item.value}>{item.value}</option>)}
+                        {!state.items ? <option></option> : state.items.map((item) => <option key={item.key} value={item.value}>{item.value}</option>)}
                     </select>
                 </li>
                 <li>
@@ -71,11 +75,6 @@ const BookingForm = () => {
                     <button id="reservation-button" className='primary-button' type="submit" >Make Reservation</button>
                 </li>
             </ul>
-
-
-
-
-
         </form>
     )
 }

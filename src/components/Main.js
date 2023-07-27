@@ -1,7 +1,8 @@
 import React, { useState, useReducer, useEffect, createContext } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Reservations from './BookingPage'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import BookingPage from './BookingPage'
 import Hero from './Hero'
+import { ConfirmedBooking } from './ConfimedBooking'
 import { fetchAPI, submitAPI } from './API'
 
 export const MainContext = createContext();
@@ -31,23 +32,33 @@ export const MainProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(updateTimes, times);
 
-
     return (
         <MainContext.Provider value={{ state, dispatch }}>
             {children}
         </MainContext.Provider>
     )
-}
-    ;
+};
+
+
 
 
 const Main = () => {
+
+    const navigate = useNavigate();
+    const submitForm = (data) =>{
+
+        if(submitAPI(data)){
+            navigate('/confirmation', {state:data})
+        }
+
+    }
 
     return (
         <MainProvider>
             <Routes>
                 <Route path='/' element={<Hero />}></Route>
-                <Route path='/reservations' element={<Reservations />}></Route>
+                <Route path='/reservations' element={<BookingPage submitForm={submitForm}/>}></Route>
+                <Route path='/confirmation' element={<ConfirmedBooking />}></Route>
             </Routes>
         </MainProvider>
     )
