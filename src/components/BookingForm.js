@@ -8,10 +8,10 @@ const BookingForm = (props) => {
     const now = new Date();
     const today = formatDates(now)
 
-    const [guests, setGuests] = useState(1);
+    const [guests, setGuests] = useState();
     const [resTime, setResTime] = useState('');
-    const [occasion, setOccasion] = useState('Birthday');
-    const [date, setDate] = useState(today);
+    const [occasion, setOccasion] = useState('');
+    const [date, setDate] = useState();
     const { state, dispatch } = useContext(MainContext);
 
 
@@ -19,11 +19,8 @@ const BookingForm = (props) => {
         setDate(state.date)
     }, [state.date])
 
-    if (!date) setDate(today)
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Reservation has been made")
         const submitVal = {
             resDate: date,
             resTime: resTime,
@@ -31,25 +28,43 @@ const BookingForm = (props) => {
             occasion: occasion
         }
         const { submitForm } = props;
-        submitForm(submitVal)
+        //setDate('')
+        submitForm(submitVal);
     }
 
+    const checkform = () => {
+        var cansubmit = true;
+        if (!date || !resTime || !guests || !occasion) cansubmit = false
+        if (cansubmit) {
+            document.getElementById('reservation-button').disabled = false;
+        }
+    }
     return (
         <form id="reservation-form" onSubmit={handleSubmit} className='subtext'>
             <ul className='vert-list'>
                 <li className='subheader'>Book Now</li>
                 <li>
-                    <label htmlFor="res-date">Choose date: </label>
+                    <label htmlFor="res-date" >Choose date: </label>
                     <input
                         type="date"
                         id="res-date"
-                        defaultValue={date}
+                        data-testid="res-date"
+                        aria-label='reservation date'
+                        required
+                        onKeyUp={checkform()}
                         onChange={e => dispatch({ type: 'get-times', date: e.target.value })}
                     />
                 </li>
                 <li>
                     <label htmlFor="res-time">Choose time: </label>
-                    <select id="res-time" value={resTime} onChange={e => setResTime(e.target.value)}>
+                    <select
+                        id="res-time"
+                        value={resTime}
+                        aria-label='reservation time'
+                        required
+                        onKeyUp={checkform}
+                        onChange={e => setResTime(e.target.value)}>
+                        <option></option>
                         {!state.items ? <option></option> : state.items.map((item) => <option key={item.key} value={item.value}>{item.value}</option>)}
                     </select>
                 </li>
@@ -60,19 +75,28 @@ const BookingForm = (props) => {
                         placeholder="1"
                         min="1" max="10"
                         id="guests"
-                        value={guests}
+                        aria-label='number of guests'
+                        required
+                        onKeyUp={checkform}
                         onChange={e => setGuests(e.target.value)}
                     />
                 </li>
                 <li>
                     <label htmlFor="occasion">Occasion: </label>
-                    <select id="occasion" value={occasion} onChange={e => setOccasion(e.target.value)}>
+                    <select
+                        id="occasion"
+                        value={occasion}
+                        required
+                        onKeyUp={checkform}
+                        onChange={e => setOccasion(e.target.value)}>
+                        <option></option>
+                        <option value="Dinner">Just Dinner</option>
                         <option value='Birthday'>Birthday</option>
                         <option value='Anniversary'>Anniversary</option>
                     </select>
                 </li>
                 <li>
-                    <button id="reservation-button" className='primary-button' type="submit" >Make Reservation</button>
+                    <button id="reservation-button" className='primary-button' type="submit" disabled="disabled" aria-label="make reservation" >Make Reservation</button>
                 </li>
             </ul>
         </form>

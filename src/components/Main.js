@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, createContext } from 'react'
+import React, { useReducer, useEffect, createContext } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import BookingPage from './BookingPage'
 import Hero from './Hero'
@@ -47,8 +47,12 @@ const Main = () => {
     const navigate = useNavigate();
     const submitForm = (data) =>{
 
-        if(submitAPI(data)){
+        if(submitAPI(data) === true){
+            console.log("Reservation has been made")
             navigate('/confirmation', {state:data})
+        }
+        else{
+            console.log('Was not able to make reservation at this time')
         }
 
     }

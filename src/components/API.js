@@ -32,7 +32,7 @@ export const fetchAPI =  (date) => {
     })
 }
 
-export const submitAPI = async (data) => {
+export const submitAPI = (data) => {
 
     //await timeout(2000)
     const timeAvailable = tableMap[data.resDate].some(item => item.value === data.resTime)
