@@ -1,22 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect} from 'react'
+import { MainContext } from './Main';
+import { submitAPI } from './API';
 
-
-const BookingForm = (props) => {
+const BookingForm = () => {
     const now = new Date();
     const day = ("0" + now.getDate()).slice(-2);
     const month = ("0" + (now.getMonth() + 1)).slice(-2);
     const today = now.getFullYear() + "-" + (month) + "-" + (day)
 
-    const [date, setDate] = useState(today)
     const [guests, setGuests] = useState(1);
     const [resTime, setResTime] = useState();
     const [occasion, setOccasion] = useState();
-    const [availableTimes, setTimes] = useState(props.state)
+    const [date,setDate] = useState();
+    const {state, dispatch} =useContext(MainContext);
+
+    useEffect(()=>{
+        setDate(state.date)
+    },[state.date])
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Reservation has been made")
+        const submitVal ={
+            resDate: date,
+            resTime: resTime,
+            guests: guests,
+            occasion: occasion
+        }
+        submitAPI(submitVal)
     }
     return (
         <form id="reservation-form" onSubmit={handleSubmit} className='subtext'>
@@ -27,14 +39,14 @@ const BookingForm = (props) => {
                     <input
                         type="date"
                         id="res-date"
-                        value={date}
-                        onChange={e => setDate(e.target.value)}
+                        defaultValue={date}
+                        onChange={e => dispatch({type:'get-times', date: e.target.value})}
                     />
                 </li>
                 <li>
                     <label htmlFor="res-time">Choose time: </label>
                     <select id="res-time" value={resTime} onChange={e => setResTime(e.target.value)}>
-                        {!availableTimes ? <option></option> : availableTimes.map((item)=><option key={item.key} value={item.value}>{item.value}</option>)}
+                        {!state.items ? <option></option> : state.items.map((item)=><option key={item.key} value={item.value}>{item.value}</option>)}
                     </select>
                 </li>
                 <li>

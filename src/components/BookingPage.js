@@ -1,10 +1,10 @@
 import BookingForm from "./BookingForm";
-const Reservations = (props) => {
+const Reservations = () => {
 
     return (
         <div className="hero">
             <div className="container">
-                <BookingForm state={props.state} setTimes={props.setTimes}/>
+                <BookingForm />
             </div>
         </div>
     )
